@@ -65,10 +65,6 @@ with open('api_key.json', 'r') as file:
 
 api_key = data["API_KEY"]
 
-<<<<<<< HEAD
-api_key = 'API_KEY'
-=======
->>>>>>> bb38791 (added "check_bad_weather()" func)
 latitude, longtitude = '55.755864', '37.617698'
 
 print(check_bad_weather(api_key, latitude, longtitude))
