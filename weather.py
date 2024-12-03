@@ -1,5 +1,6 @@
 import requests, json
 
+
 def get_location_id(api_key, latitude, longtitude):
     try:
         url = f"https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={api_key}&q={latitude},{longtitude}"
@@ -24,11 +25,6 @@ def get_conditions(api_key, latitude, longtitude):
         data_1day = response_1day.json()
         data_current = response_current.json()
 
-        # with open('weather_conditions.json', 'w') as json_file:
-        #     json.dump(data_1day, json_file, indent=4)
-        # with open('current_conditions.json', 'w') as json_file:
-        #     json.dump(data_current, json_file, indent=4)
-
         conditions = {
             "temperature": data_current[0]["Temperature"]["Metric"]["Value"],
             "humidity": data_current[0]["RelativeHumidity"],
@@ -40,8 +36,7 @@ def get_conditions(api_key, latitude, longtitude):
     except Exception as e:
         return e
     
-def check_bad_weather(api_key, latitude, longtitude):
-    conditions = get_conditions(api_key, latitude, longtitude)
+def check_bad_weather(api_key, conditions={}):
     bad_weather_score = 0
 
     if conditions["rain_probability_day"] > 70 or conditions["rain_probability_night"] > 70:
@@ -60,14 +55,4 @@ def check_bad_weather(api_key, latitude, longtitude):
     if bad_weather_score == 0:
         return "favorable weather conditions"
     
-with open('api_key.json', 'r') as file:
-    data = json.load(file)
-
-api_key = data["API_KEY"]
-
-latitude, longtitude = '55.755864', '37.617698'
-
-print(check_bad_weather(api_key, latitude, longtitude))
-
-
 
