@@ -6,58 +6,82 @@
     <title>Форма координат</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Изменено для вертикального расположения */
             align-items: center;
             height: 100vh;
             margin: 0;
         }
+        .header {
+            background-color: #007bff; /* Цвет фона шапки */
+            color: white; /* Цвет текста */
+            padding: 15px 20px; /* Отступы */
+            width: 100%; /* Ширина на всю страницу */
+            text-align: center; /* Центрирование текста */
+            font-size: 24px; /* Размер шрифта */
+            border-bottom: 2px solid #0056b3; /* Нижняя граница для акцента */
+        }
         .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            margin-top: 20px; /* Отступ сверху для формы */
         }
         h2 {
             text-align: center;
             margin-bottom: 20px;
+            color: #333;
         }
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
         }
         input[type="text"] {
-            width: calc(100% - 10px);
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            transition: border-color 0.3s ease-in-out;
+        }
+        input[type="text"]:focus {
+            border-color: #80bdff; /* Цвет рамки при фокусе */
+            outline: none; /* Убираем стандартное выделение */
         }
         input[type="submit"] {
             width: 100%;
-            padding: 10px;
-            background-color: #28a745;
+            padding: 12px;
+            background-color: #007bff; /* Основной цвет кнопки */
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px; /* Размер шрифта */
+            transition: background-color 0.3s ease-in-out; /* Плавный переход цвета */
         }
         input[type="submit"]:hover {
-            background-color: #218838;
+            background-color: #0056b3; /* Цвет кнопки при наведении */
         }
         .output {
             margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f9f9f9; /* Цвет фона для текстового окна */
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f8f9fa; /* Цвет фона для текстового окна */
+            border-left: 5px solid #007bff; /* Левый бордер для акцента */
         }
     </style>
 </head>
 <body>
+
+<div class="header">
+    WeatherApp
+</div>
 
 <div class="form-container">
     <h2>Введите координаты</h2>
