@@ -36,7 +36,7 @@ def get_conditions(api_key, latitude, longtitude):
     except Exception as e:
         return e
     
-def check_bad_weather(api_key, conditions={}):
+def check_bad_weather(conditions):
     bad_weather_score = 0
 
     if conditions["rain_probability_day"] > 70 or conditions["rain_probability_night"] > 70:

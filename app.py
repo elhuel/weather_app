@@ -19,6 +19,8 @@ def index():
         longitude = request.form['longitude']
         
         response = get_conditions(api_key, latitude, longitude)
+        favorability = check_bad_weather(response)
+
 
         temp = response["temperature"]
         wind = response['wind']
@@ -26,8 +28,8 @@ def index():
         rain_prob_day = response['rain_probability_day']
         rain_prob_night = response['rain_probability_night']
 
-        return render_template('form.html', temp=f'{temp}°C', wind=f'{wind} m/s', humidity=f'{humidity}%', rain_prob_day=f'{rain_prob_day}%', rain_prob_night=f'{rain_prob_night}')
+        return render_template('form.html', temp=f'{temp}°C', wind=f'{wind} m/s', humidity=f'{humidity}%', rain_prob_day=f'{rain_prob_day}%', rain_prob_night=f'{rain_prob_night}', favorability=favorability)
     return render_template('form.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
